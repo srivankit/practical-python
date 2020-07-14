@@ -4,7 +4,7 @@
 Total_Cost=0
 shares_no = 0
 share_price = 0
-with open('Data/portfolio.csv') as f:
+with open('Data/portfolio.csv','rt') as f:
     next(f)
     for line in f:
         row = line.split(',')
