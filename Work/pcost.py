@@ -5,6 +5,7 @@
 Computes total cost of the portfolio price* no. of shares
 
 '''
+import sys
 def portfolio_cost(filename):
     import csv
     Total_Cost=0.0
@@ -21,8 +22,11 @@ def portfolio_cost(filename):
             except ValueError:
                 print("couldn't parse", row )    
     return Total_Cost        
+if len(sys.argv) == 2:
+    filename = sys.argv[1]
+else:
+    filename = 'Data/portfolio.csv'
 
-
-cost = portfolio_cost('Data/portfolio.csv')
+cost = portfolio_cost(filename)
 print(f'Total cost {cost}')
 
