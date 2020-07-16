@@ -96,3 +96,11 @@ print(('-' * 10 + ' ') * len(headers))
 
 for row in report:
     print(row)
+
+# cost = [(s['name'],s['shares']) for s in portfolio if (s['shares']*s['price'])>10000]
+
+# print(cost)
+# names = { s['name'] for s in portfolio }
+
+# stocks = { s: prices[s] for s in names}
+# print(stocks)
