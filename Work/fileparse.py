@@ -3,7 +3,7 @@
 # Exercise 3.3
 import csv
 
-def parse_csv(filename, select = None, types = None, has_headers = True, delimiter=','):
+def parse_csv(filename, select = None, types = None, has_headers = True, delimiter=',', silence_errors=False):
     '''
     Parse a CSV file into a list of records
     '''
@@ -41,8 +41,9 @@ def parse_csv(filename, select = None, types = None, has_headers = True, delimit
                 try:
                     row = [func(val) for func, val in zip(types, row) ]
                 except ValueError as e:
-                    print(f"Row {rownum}: Couldn't parse {row}")
-                    print(f'Row {rownum} {e}')
+                    if not silence_errors:
+                        print(f"Row {rownum}: Couldn't parse {row}")
+                        print(f'Row {rownum} {e}')
 
         # Make a dictionary/tuple of records
             if headers:
@@ -52,5 +53,5 @@ def parse_csv(filename, select = None, types = None, has_headers = True, delimit
             records.append(record)
     return records
 
-portfolio = parse_csv('Data/missing.csv', types=[str, int, float])
-# print(portfolio)
+portfolio = parse_csv('Data/missing.csv', types=[str,int,float], silence_errors=True)
+print(portfolio)
