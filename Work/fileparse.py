@@ -3,7 +3,7 @@
 # Exercise 3.3
 import csv
 
-def parse_csv(filename, select = None):
+def parse_csv(filename, select = None, types = None):
     '''
     Parse a CSV file into a list of records
     '''
@@ -26,14 +26,20 @@ def parse_csv(filename, select = None):
             if not row:    # Skip rows with no data
                 continue
         # Filter the row if specific columns were selected
+            if types:
+                row = [func(val) for func, val in zip(types, row) ]  
+            
             if indices:
                 row = [ row[index] for index in indices ]    
-            
+  
             # Make a dictionary
             record = dict(zip(headers, row))
             records.append(record)
 
     return records
 
-portfolio = parse_csv('Data/portfolio.csv', select=['name','shares'])
-print(portfolio)
+
+# portfolio = parse_csv('Data/portfolio.csv', select=['name','shares'])
+#portfolio = parse_csv('Data/portfolio.csv', types=[str, int, float])
+shares_held = parse_csv('Data/portfolio.csv', select=['name', 'shares'], types=[str, int])
+print(shares_held)
