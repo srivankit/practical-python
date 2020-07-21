@@ -77,9 +77,25 @@ def make_report(stocks, price):
         shares_number = row['shares']
         change = price[stock_name]-stock_price
         dollar = '$'
-        summary = f'{stock_name:>10s}{shares_number:>10d}{dollar:>7s}{stock_price:<5.2f}{change:>10.2f}'
+        #{dollar:>7s}
+        summary = f'{stock_name:>10s}{shares_number:>10d}{f"${stock_price:>.2f}":>10}{change:>10.2f}'
         rows.append(summary)
     return rows
+
+
+
+#Generate Report
+def print_report(report):
+    '''
+    Prints report in a formatted way
+    '''
+    headers = ('Name', 'Shares', 'Price', 'Change')
+    header_string = f'{headers[0]:>10s} {headers[1]:>10s} {headers[2]:>10s} {headers[3]:>10s}'
+    print(header_string)
+    print(('-' * 10 + ' ') * len(headers))
+
+    for row in report:
+        print(row)
 
 # Read data files and create the report data 
 portfolio = read_portfolio('Data/portfolio.csv')
@@ -88,14 +104,8 @@ prices    = read_prices('Data/prices.csv')
 # Generate the report data
 report = make_report(portfolio, prices)
 
-#Generate Report
-headers = ('Name', 'Shares', 'Price', 'Change')
-header_string = f'{headers[0]:>10s} {headers[1]:>10s} {headers[2]:>10s} {headers[3]:>10s}'
-print(header_string)
-print(('-' * 10 + ' ') * len(headers))
-
-for row in report:
-    print(row)
+#print report by calling print_report function
+print_report(report)
 
 # cost = [(s['name'],s['shares']) for s in portfolio if (s['shares']*s['price'])>10000]
 
