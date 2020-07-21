@@ -97,15 +97,18 @@ def print_report(report):
     for row in report:
         print(row)
 
-# Read data files and create the report data 
-portfolio = read_portfolio('Data/portfolio.csv')
-prices    = read_prices('Data/prices.csv')
+def portfolio_report(portfolio_filename, prices_filename):
+    # Read data files and create the report data 
+    portfolio = read_portfolio(portfolio_filename)
+    prices    = read_prices(prices_filename)
 
-# Generate the report data
-report = make_report(portfolio, prices)
+    # Generate the report data
+    report = make_report(portfolio, prices)
 
-#print report by calling print_report function
-print_report(report)
+    #print report by calling print_report function
+    print_report(report)
+
+#portfolio_report('Data/portfolio.csv', 'Data/prices.csv')
 
 # cost = [(s['name'],s['shares']) for s in portfolio if (s['shares']*s['price'])>10000]
 
