@@ -111,7 +111,7 @@ def main(argv):
 if __name__ == '__main__':
     import sys
     main(sys.argv)
-    print('it is main program')
+    # print('it is main program')
 
 # if __name__ == 'report':
 #     print('Not a main program')
