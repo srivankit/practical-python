@@ -54,4 +54,4 @@ def parse_csv(filename, select = None, types = None, has_headers = True, delimit
     return records
 
 portfolio = parse_csv('Data/missing.csv', types=[str,int,float], silence_errors=True)
-print(portfolio)
+#print(portfolio)

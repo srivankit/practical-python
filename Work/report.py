@@ -60,14 +60,14 @@ def make_report(stocks, price):
     '''
     rows = []
     prices = dict(price)
-    print(prices)
+    
     for row in stocks:
         stock_name=row['name']
         stock_price=float(row['price'])
         current_price = float(prices[stock_name])
         shares_number = int(row['shares'])
         change = current_price - stock_price
-        print(change)
+        
         summary = f'{stock_name:>10s}{shares_number:>10d}{f"${current_price:>.2f}":>10}{change:>10.2f}'
         rows.append(summary)
     return rows
@@ -92,7 +92,7 @@ def portfolio_report(portfolio_filename, prices_filename):
     portfolio = read_portfolio(portfolio_filename)
     # print(portfolio)
     prices    = read_prices(prices_filename)
-    print(prices)
+    
     # Generate the report data
     report = make_report(portfolio, prices)
 
