@@ -8,20 +8,11 @@ Computes total cost of the portfolio price* no. of shares
 import sys
 def portfolio_cost(filename):
     import csv
+    import report
     Total_Cost=0.0
-    
-    with open(filename,'rt') as f:
-        rows = csv.reader(f)
-        headers = next(rows)
-        for rowno, row in enumerate(rows, start =1):
-            record = dict(zip(headers, row))
-            try:
-                share_price = float(record['price'])
-                shares_no = int(record['shares'])
-                Total_Cost = Total_Cost + (share_price  * shares_no)
-            except ValueError:
-                print(f'Row {rowno}: Bad row:{row}' ) 
-           
+    record = report.read_portfolio(filename)
+    for row in record:
+        Total_Cost = Total_Cost + (int(row['shares'])*float(row['price']))
     return Total_Cost        
 if len(sys.argv) == 2:
     filename = sys.argv[1]
