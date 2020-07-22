@@ -2,13 +2,13 @@
 # report.py
 #
 # Exercise 2.4
-
+from fileparse import parse_csv
 def read_portfolio(filename):
     '''
     Read stock prices into a list
 
     '''
-    from fileparse import parse_csv
+ 
     portfolio = parse_csv(filename)
     # import csv
     # Total_Cost=0.0
@@ -38,7 +38,7 @@ def read_prices(filename):
     Reading prices of the shares using share name
 
     '''
-    from fileparse import parse_csv
+
     prices = parse_csv(filename, has_headers =False)
     # prices ={}
     # import csv
