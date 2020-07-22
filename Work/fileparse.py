@@ -46,7 +46,7 @@ def parse_csv(filename, select = None, types = None, has_headers = True, delimit
                         print(f'Row {rownum} {e}')
 
         # Make a dictionary/tuple of records
-            if headers:
+            if has_headers:
                 record = dict(zip(headers,row))
             else:
                 record = tuple(row)  
