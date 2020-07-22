@@ -99,4 +99,19 @@ def portfolio_report(portfolio_filename, prices_filename):
     #print report by calling print_report function
     print_report(report)
 
-portfolio_report(portfolio_filename = 'Data/portfolio.csv', prices_filename = 'Data/prices.csv')
+#portfolio_report(portfolio_filename = 'Data/portfolio.csv', prices_filename = 'Data/prices.csv')
+# import sys
+def main(argv):
+    if len(argv) !=3:
+        raise SystemExit(f'Usage: {argv[0]} ' 'portfile pricefile')
+    portfile = argv[1]
+    pricefile = argv[2]
+    portfolio_report(portfile,pricefile)
+
+if __name__ == '__main__':
+    import sys
+    main(sys.argv)
+    print('it is main program')
+
+# if __name__ == 'report':
+#     print('Not a main program')
