@@ -1,6 +1,8 @@
+#!/usr/bin/env python3
 # pcost.py
 #
 # Exercise 1.27
+
 '''
 Computes total cost of the portfolio price* no. of shares
 
@@ -19,7 +21,13 @@ if len(sys.argv) == 2:
 else:
     filename = 'Data/portfolio.csv'
 
-filename = 'Data/portfoliodate.csv'
-cost = portfolio_cost(filename)
-print(f'Total cost {cost}')
+def main(argv):
+    if len(argv) !=2:
+        raise SystemExit(f'Usage: {argv[0]} ' 'portfile pricefile')
+    filename = argv[1]
+    cost = portfolio_cost(filename)
+    print(f'Total cost {cost}')
+if __name__ == '__main__':
+    import sys
+    main(sys.argv)
 
